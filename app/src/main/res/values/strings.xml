@@ -1,0 +1,70 @@
+<resources>
+
+    <!--   normal  > 5argeya
+           7walat  > eradat   -->
+    <string name="app_name">TheApplication</string>
+    <string name="title">النوران</string>
+    <string name="txt_login">تسجيل الدخول</string>
+    <string name="txt_logout">تسجيل الخروج</string>
+    <string name="txt_mobileNumber">رقم الموبايل</string>
+    <string name="txt_password">كلمة السر</string>
+    <string name="hint_mobileNumber">أدخل رقم الموبايل</string>
+    <string name="hint_password">أدخل كلمة السر</string>
+    <string name="txt_enter">دخول</string>
+
+
+    <string name="txt_masareef">تسجيل مصاريف إدارية</string>
+    <string name="txt_branchCredit">رصيد الفرع</string>
+    <string name="txt_branchCreditValue">600</string>
+    <string name="txt_sayHi">أهلا عمرو</string>
+    <string name="txt_tosayhi">أهلا عمرو</string>
+    <string name="txt_submit">تسجيل</string>
+    <string name="txt_outs">الصادرات</string>
+    <string name="txt_done">تم</string>
+
+    <string name="txt_senderBranch">فرع الإستلام</string>
+    <string name="txt_receiverBranch">فرع المستلم</string>
+    <string name="txt_amount">المبلغ</string>
+    <string name="txt_transferringBranch">الفرع المحول إليه</string>
+    <string name="txt_receivingBranch">الفرع المحول</string>
+    <string name="txt_personalAccount">حساب شخصي</string>
+    <string name="txt_currency">العملة</string>
+    <string name="txt_nationalID">الرقم القومي</string>
+    <string name="txt_edariDescription">البند</string>
+    <string name="txt_registerSader">تسجيل صادر</string>
+    <string name="txt_account">الحساب</string>
+    <string name="txt_currency_egyptian">جنيه مصري</string>
+    <string name="txt_currency_libyan">دينار ليبي</string>
+    <string name="txt_branch">الفرع</string>
+    <string name="txt_typebranch">فرع</string>
+    <string name="txt_typepersonal">شخصية</string>
+    <string name="txt_date">التاريخ</string>
+    <string name="txt_notes">ملاحظات</string>
+
+
+    <string name="txt_7walat">تسجيل إيرادات</string>
+    <string name="txt_7walat_normal">تسجيل إيرادات خارجية</string>
+    <string name="txt_7walat_postal">تسجيل إيرادات بريدية</string>
+    <string name="txt_7walat_local">تسجيل إيرادات داخلية</string>
+    <string name="txt_7walat_personal">تسجيل إيرادات شخصية</string>
+    <string name="txt_7wala_normal">تسجيل إيراد خارجي</string>
+    <string name="txt_7wala_postal">تسجيل إيراد بريدي</string>
+    <string name="txt_7wala_local">تسجيل إيراد داخلي</string>
+    <string name="txt_7wala_personal">تسجيل إيراد شخصي</string>
+
+    <string name="txt_sader">تسجيل صادرات</string>
+    <string name="txt_saderat_normal">تسجيل صادرات خارجية</string>
+    <string name="txt_saderat_postal">تسجيل صادرات بريدية</string>
+    <string name="txt_saderat_personal">تسجيل صادرات شخصية</string>
+
+
+    <string name="txt_sender">اسم الراسل</string>
+    <string name="txt_receiver">اسم المستلم</string>
+    <string name="txt_amountTransfered">المبلغ الوارد</string>
+    <string name="txt_amountToBeReceived">المبلغ الصادر</string>
+    <string name="txt_TransferringValue">قيمة التحويل</string>
+
+    <string name="txt_Branches">أرصدة الفروع</string>
+
+
+</resources>

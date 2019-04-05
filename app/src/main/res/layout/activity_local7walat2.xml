@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".local7walat2Activity">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="163dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/txt_7wala_local"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="365dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="176dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/roundedcorners"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="@string/txt_amount"
+                android:textColor="@color/colorGray72"
+                tools:layout_editor_absoluteX="254dp"
+                tools:layout_editor_absoluteY="4dp" />
+
+            <EditText
+                android:id="@+id/et_amountValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="right"
+                android:inputType="number"
+                android:padding="4dp"
+                android:textColor="@color/colorGray19" />
+
+            <TextView
+                android:id="@+id/tv_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="@string/txt_account"
+                android:textColor="@color/colorGray72" />
+
+            <Spinner
+                android:id="@+id/sp_accountValue"
+                style="@style/spinner_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="4dp" />
+
+            <TextView
+                android:id="@+id/tv_receivingbranch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="@string/txt_receivingBranch"
+                android:textColor="@color/colorGray72" />
+
+            <TextView
+                android:id="@+id/tv_receivingbranchValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="4dp"
+                android:textColor="@color/colorGray19" />
+
+            <TextView
+                android:id="@+id/tv_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="@string/txt_notes"
+                android:textColor="@color/colorGray72" />
+
+            <EditText
+                android:id="@+id/et_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="right"
+                android:inputType="text"
+                android:padding="4dp"
+                android:textColor="@color/colorGray19" />
+
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="163dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/buttonstyle"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="submit"
+                android:text="@string/txt_submit"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

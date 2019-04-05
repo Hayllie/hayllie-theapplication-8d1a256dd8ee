@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".postal7walatActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="163dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/txt_7wala_postal"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="365dp"
+        android:layout_height="455dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/roundedcorners"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tv_receiver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/txt_receiver"
+                    android:textColor="@color/colorGray72" />
+
+                <EditText
+                    android:id="@+id/et_receiverValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="textPersonName"
+                    android:padding="4dp"
+                    android:textColor="@color/colorGray19" />
+
+                <TextView
+                    android:id="@+id/tv_nationalID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/txt_nationalID"
+                    android:textColor="@color/colorGray72"
+                    tools:layout_editor_absoluteX="254dp"
+                    tools:layout_editor_absoluteY="4dp" />
+
+                <EditText
+                    android:id="@+id/et_nationalIDValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:padding="4dp"
+                    android:textColor="@color/colorGray19" />
+
+                <TextView
+                    android:id="@+id/tv_mobilenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/txt_mobileNumber"
+                    android:textColor="@color/colorGray72"
+                    tools:layout_editor_absoluteX="254dp"
+                    tools:layout_editor_absoluteY="4dp" />
+
+                <EditText
+                    android:id="@+id/et_mobilenumberValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="phone"
+                    android:padding="4dp"
+                    android:textColor="@color/colorGray19" />
+
+                <TextView
+                    android:id="@+id/tv_amounttransferred"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/txt_amountTransfered"
+                    android:textColor="@color/colorGray72"
+                    tools:layout_editor_absoluteX="254dp"
+                    tools:layout_editor_absoluteY="4dp" />
+
+                <EditText
+                    android:id="@+id/et_amounttransferredValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:padding="4dp"
+                    android:textColor="@color/colorGray19" />
+
+                <TextView
+                    android:id="@+id/tv_transferringvalue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/txt_TransferringValue"
+                    android:textColor="@color/colorGray72" />
+
+                <EditText
+                    android:id="@+id/et_transferringvaluevalue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:padding="4dp"
+                    android:textColor="@color/colorGray19" />
+
+                <TextView
+                    android:id="@+id/tv_amountobereceived"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/txt_amountToBeReceived"
+                    android:textColor="@color/colorGray72" />
+
+                <EditText
+                    android:id="@+id/et_amountobereceivedValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:textColor="@color/colorGray19" />
+
+                <TextView
+                    android:id="@+id/tv_receiverbranch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/txt_receiverBranch"
+                    android:textColor="@color/colorGray72" />
+
+
+                <Spinner
+                    android:id="@+id/sp_receiverbranchValue"
+                    style="@style/spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="4dp" />
+
+                <TextView
+                    android:id="@+id/tv_senderbranch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/txt_senderBranch"
+                    android:textColor="@color/colorGray72" />
+
+                <TextView
+                    android:id="@+id/tv_senderbranchValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="4dp"
+                    android:textColor="@color/colorGray19" />
+
+                <TextView
+                    android:id="@+id/tv_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/txt_notes"
+                    android:textColor="@color/colorGray72" />
+
+                <EditText
+                    android:id="@+id/et_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="text"
+                    android:padding="4dp"
+                    android:textColor="@color/colorGray19" />
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="163dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/buttonstyle"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:onClick="submit"
+                    android:text="@string/txt_submit"
+                    android:textColor="@color/colorWhite" />
+            </LinearLayout>
+        </ScrollView>
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

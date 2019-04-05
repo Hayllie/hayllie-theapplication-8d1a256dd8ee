@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.pc.theapplication">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <receiver
+        android:name="com.example.broadcast_internetcheck.NetworkChangeReceiver"
+        android:label="NetworkChangeReceiver">
+        <intent-filter>
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+        </intent-filter>
+    </receiver>
+
+    <application
+        android:allowBackup="true"
+        android:fontFamily="@font/sfprodisplaysemibold"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".NoConnectionActivity"></activity>
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".normalSaderatActivity" />
+        <activity android:name=".postalSaderatActivity" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity android:name=".SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ManageAccountActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".n7walatActivity" />
+        <activity android:name=".nSaderatActivity" />
+        <activity android:name=".nEdariActivity" />
+        <activity android:name=".normal7walat3Activity" />
+        <activity android:name=".postal7walatActivity" />
+        <activity android:name=".local7walat3Activity" />
+        <activity android:name=".personal7walatActivity" />
+        <activity android:name=".prepersonal7walatActivity" />
+        <activity android:name=".personalSaderatActivity" />
+        <activity android:name=".personalSaderat2Activity" />
+        <activity android:name=".normal7walat2Activity" />
+        <activity android:name=".normal7walatActivity" />
+        <activity android:name=".local7walat2Activity" />
+        <activity android:name=".local7walatActivity" />
+    </application>
+
+</manifest>
