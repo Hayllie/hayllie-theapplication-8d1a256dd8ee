@@ -6,14 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <receiver
-        android:name="com.example.broadcast_internetcheck.NetworkChangeReceiver"
-        android:label="NetworkChangeReceiver">
-        <intent-filter>
-            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-        </intent-filter>
-    </receiver>
 
     <application
         android:allowBackup="true"
@@ -56,6 +48,18 @@
         <activity android:name=".normal7walatActivity" />
         <activity android:name=".local7walat2Activity" />
         <activity android:name=".local7walatActivity" />
+
+        <receiver
+            android:name="com.example.pc.theapplication.Network.NetworkChangeReceiver"
+            android:label="NetworkChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
     </application>
+
+
 
 </manifest>

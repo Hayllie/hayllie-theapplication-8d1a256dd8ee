@@ -18,9 +18,16 @@ public class NetworkChangeReceiver extends BroadcastReceiver{
 
         Toast.makeText(context, status, Toast.LENGTH_LONG).show();
 
-/*        if (status == "Not connected to Internet"){
-            Intent intent = new Intent(this, normalSaderatActivity.class);
-            startActivity(intent);
-        }*/
+        if (status == "Not connected to Internet"){
+            Intent intentx = new Intent();
+            intentx.setClassName("com.example", "com.example.pc.theapplication.normalSaderatActivity");
+            intentx.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentx);
+
+/*            Intent intent = new Intent(context, normalSaderatActivity.class);
+            context.startActivity(intent);*/
+        }
+
+
     }
 }

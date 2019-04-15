@@ -53,6 +53,11 @@ public class normalSaderatAdapter extends RecyclerView.Adapter<normalSaderatAdap
                     StringRequest MyStringRequest = new StringRequest(Request.Method.POST, URLdone, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
+
+                            normalSaderatList.remove(getPosition());
+                            notifyItemRemoved(getPosition());
+                            notifyItemRangeChanged(getPosition(), normalSaderatList.size());
+
                             Toast toast = Toast.makeText(mContext,"تم التسجيل",Toast.LENGTH_SHORT);
                             toast.setMargin(50,50);
                             toast.show();

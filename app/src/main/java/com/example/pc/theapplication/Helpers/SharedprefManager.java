@@ -42,7 +42,7 @@ public class SharedprefManager {
         editor.putString(KEY_PHONE, user.getPhone());
         editor.putString(KEY_BRANCH, user.getBranch());
         editor.putString(KEY_COUNTRY, user.getCountry());
-        editor.putString(KEY_ADMIN, user.getAdmin());
+        editor.putInt(KEY_ADMIN, user.getAdmin());
         editor.apply();
     }
 
@@ -60,7 +60,7 @@ public class SharedprefManager {
                 sharedPreferences.getString(KEY_PHONE, null),
                 sharedPreferences.getString(KEY_BRANCH, null),
                 sharedPreferences.getString(KEY_COUNTRY, null),
-                sharedPreferences.getString(KEY_ADMIN, null)
+                sharedPreferences.getInt(KEY_ADMIN, 0)
 
 
                 );

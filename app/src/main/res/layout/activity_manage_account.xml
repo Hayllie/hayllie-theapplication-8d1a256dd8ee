@@ -182,6 +182,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="30dp"
             android:background="@drawable/blueroundedcorners"
+            android:clickable="true"
             android:orientation="vertical">
 
             <TextView
@@ -200,7 +201,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center_horizontal"
-                android:text="@string/txt_branchCreditValue"
                 android:textColor="@color/colorWhite" />
         </LinearLayout>
 

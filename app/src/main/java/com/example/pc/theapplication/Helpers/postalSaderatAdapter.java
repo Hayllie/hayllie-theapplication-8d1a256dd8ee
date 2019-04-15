@@ -56,6 +56,11 @@ public class postalSaderatAdapter extends RecyclerView.Adapter<postalSaderatAdap
                     StringRequest MyStringRequest = new StringRequest(Request.Method.POST, URLdone, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
+
+                            postalSaderatList.remove(getPosition());
+                            notifyItemRemoved(getPosition());
+                            notifyItemRangeChanged(getPosition(), postalSaderatList.size());
+
                             Toast toast = Toast.makeText(mContext,"تم التسجيل",Toast.LENGTH_SHORT);
                             toast.setMargin(50,50);
                             toast.show();

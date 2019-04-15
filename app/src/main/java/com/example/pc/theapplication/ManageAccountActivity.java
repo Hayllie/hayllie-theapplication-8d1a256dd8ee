@@ -38,7 +38,9 @@ public class ManageAccountActivity extends AppCompatActivity {
     TextView tv_sayhi, textToAppear, tv_branchCreditValue;
     LinearLayout pView;
     String URL = "http://branding-kitchen.com/ba/branchm.php";
-    String admin, branchIn;
+    String branchIn;
+    int admin = 0;
+
 
     public static int getColorWrapper(Context context, int id) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -94,12 +96,12 @@ public class ManageAccountActivity extends AppCompatActivity {
         tv_sayhi.setText("أهلا " + userModel.getUsername());
 
         admin = userModel.getAdmin();
-        if ( admin == "1"){
-            pView.setClickable(true);
+        if ( admin == 1 ){
             tv_branchCreditValue.setVisibility(View.INVISIBLE);
             textToAppear.setText("أرصدة الفروع");
+
         } else {
-            pView.setClickable(false);
+
             textToAppear.setText("رصيد الفرع");
             branchIn = userModel.getBranch();
             tv_branchCreditValue.setVisibility(View.VISIBLE);
@@ -109,9 +111,15 @@ public class ManageAccountActivity extends AppCompatActivity {
         pView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slideinleft, R.anim.slideoutright);
+
+                if ( admin == 1 ){
+                    Intent intent = new Intent(ManageAccountActivity.this, AdminActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slideinleft, R.anim.slideoutright);
+
+                }
+
+
             }
         });
 
@@ -133,6 +141,7 @@ public class ManageAccountActivity extends AppCompatActivity {
                 try{
                     JSONObject jsonObject = new JSONObject(response);
                     if(jsonObject.getBoolean("status")==true){
+
                         tv_branchCreditValue.setText(jsonObject.getString("money"));
                     }
                 }catch (JSONException e){e.printStackTrace();}
@@ -147,7 +156,7 @@ public class ManageAccountActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("auth", "branchm");
-                params.put("name", branchIn);
+                params.put("branch", branchIn);
                 return params;
             }
         };

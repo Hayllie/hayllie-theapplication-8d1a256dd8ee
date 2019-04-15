@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                                         userJson.getString("phone"),
                                         userJson.getString("branch"),
                                         userJson.getString("country"),
-                                        userJson.getString("admin")
+                                        userJson.getInt("admin")
 
                                         );
 

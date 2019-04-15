@@ -2,9 +2,10 @@ package com.example.pc.theapplication.Helpers;
 
 public class UserModel {
 
-    private String id, username, password, phone, branch, country, admin;
+    private String id, username, password, phone, branch, country;
+    int admin;
 
-    public UserModel(String id, String username, String password, String phone, String branch, String country, String admin) {
+    public UserModel(String id, String username, String password, String phone, String branch, String country, int admin) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -63,11 +64,11 @@ public class UserModel {
         this.country = country;
     }
 
-    public String getAdmin() {
+    public int getAdmin() {
         return admin;
     }
 
-    public void setAdmin(String admin) {
+    public void setAdmin(int admin) {
         this.admin = admin;
     }
 
