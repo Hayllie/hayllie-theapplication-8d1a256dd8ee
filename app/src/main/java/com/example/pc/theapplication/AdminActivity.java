@@ -3,6 +3,7 @@ package com.example.pc.theapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,7 +36,7 @@ public class AdminActivity extends AppCompatActivity {
     ArrayList<String> BranchName;
     String branch;
     String URLGetBrVals = "http://branding-kitchen.com/ba/branchm.php";
-    TextView tv_accValue;
+    TextView tv_branchCreditValue;
 
 
     @Override
@@ -43,11 +44,17 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        tv_accValue = findViewById(R.id.tv_accValue);
+
+        tv_branchCreditValue = findViewById(R.id.tv_branchCreditValue);
 
         BranchName = new ArrayList<>();
-        spinner=(Spinner)findViewById(R.id.sp_transferringBranchValue);
+        spinner=(Spinner)findViewById(R.id.sp_branchValue);
         loadSpinnerData(URL);
+
+        Log.i("hayllie","spinnerLoaded");
+
+
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -72,7 +79,7 @@ public class AdminActivity extends AppCompatActivity {
                 try{
                     JSONObject jsonObject = new JSONObject(response);
                     if(jsonObject.getBoolean("status")==true){
-                        tv_accValue.setText(jsonObject.getString("money"));
+                        tv_branchCreditValue.setText(jsonObject.getString("money"));
                     }
                 }catch (JSONException e){e.printStackTrace();}
             }

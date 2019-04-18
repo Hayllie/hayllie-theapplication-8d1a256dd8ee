@@ -41,7 +41,6 @@
         <activity android:name=".postal7walatActivity" />
         <activity android:name=".local7walat3Activity" />
         <activity android:name=".personal7walatActivity" />
-        <activity android:name=".prepersonal7walatActivity" />
         <activity android:name=".personalSaderatActivity" />
         <activity android:name=".personalSaderat2Activity" />
         <activity android:name=".normal7walat2Activity" />

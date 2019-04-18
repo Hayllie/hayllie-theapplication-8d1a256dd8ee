@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -49,76 +51,82 @@ public class local7walat2Activity extends AppCompatActivity {
     String account;
     String UserIn, BranchIn, Way, WayDef;
     String amount, notes;
+    Button btn_submit;
 
     String urlSubmit = "http://branding-kitchen.com/ba/intrans.php";
 
     EditText et_amountValue, et_notes;
     TextView tv_receivingbranchValue;
 
-    Boolean checked;
 
+    public void submitData (){
+        Log.i("hayllie","clicked");
 
-    public Boolean checkValues() {
-        checked = false;
-        if (TextUtils.isEmpty(et_amountValue.toString())) {
-            et_amountValue.setError("الرجاء إدخال المطلوب");
-            et_amountValue.requestFocus();
-            checked = true;
-        }
-        return checked;
-
-    }
-
-
-    public void submit (View view){
-
-        checkValues();
-        if (checked) {
             RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
 
 
             StringRequest MyStringRequest = new StringRequest(Request.Method.POST, urlSubmit, new Response.Listener<String>() {
 
-                protected Map<String, String> getParams() {
-                    Map<String, String> MyData = new HashMap<String, String>();
-                    MyData.put("auth", "intrans");
-                    MyData.put("type", "person");
-                    MyData.put("name", account);
-                    MyData.put("price", amount);
-                    MyData.put("branchIn", BranchIn);
-                    MyData.put("way", WayDef);
-                    MyData.put("notes", notes);
-                    MyData.put("userIn", UserIn);
 
-                    return MyData;
-                }
                 @Override
                 public void onResponse(String response) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        if (jsonObject.getBoolean("status") == true) {
+                            Toast toast = Toast.makeText(getApplicationContext(), "تم تسجيل الإيراد", Toast.LENGTH_SHORT);
+                            toast.setMargin(50, 50);
+                            toast.show();
 
-                    Toast toast = Toast.makeText(getApplicationContext(), "تم تسجيل الإيراد", Toast.LENGTH_SHORT);
-                    toast.setMargin(50, 50);
-                    toast.show();
+                        } else {
+                            Toast toast = Toast.makeText(getApplicationContext(), "الرجاء مراجعة اتصالك بالانترنت والتأكد من ملئ جميع الخانات", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 }
             }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Toast.makeText(getApplicationContext(), "الرجاء الاتصال بالانترنت ", Toast.LENGTH_LONG).show();
                 }
-            });
+            }){
+                protected Map<String, String> getParams() {
+                    Map<String, String> MyData = new HashMap<String, String>();
+                    MyData.put("auth", "intrans");
+                    MyData.put("type", "person");
+                    MyData.put("name", account);
+                    MyData.put("inPrice", amount);
+                    MyData.put("branchIn", BranchIn);
+                    MyData.put("way", WayDef);
+                    MyData.put("notes", notes);
+                    MyData.put("userIn", UserIn);
+                    Log.i("hayllie","done");
+                    return MyData;
+                }
+            };
 
 
             MyRequestQueue.add(MyStringRequest);
         }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local7walat2);
 
-        et_amountValue =findViewById(R.id.et_amountValue);
-        et_notes =findViewById(R.id.et_notes);
+        et_amountValue = findViewById(R.id.et_amountValue);
+        et_notes = findViewById(R.id.et_notes);
         tv_receivingbranchValue = findViewById(R.id.tv_receivingbranchValue);
+        btn_submit = findViewById(R.id.btn_submit);
+
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submitData();
+            }
+        });
 
         spinner=(Spinner)findViewById(R.id.sp_accountValue);
         loadSpinnerData(URL);

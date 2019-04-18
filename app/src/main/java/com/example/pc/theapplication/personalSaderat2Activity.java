@@ -18,6 +18,9 @@ import com.android.volley.toolbox.Volley;
 import com.example.pc.theapplication.Helpers.SharedprefManager;
 import com.example.pc.theapplication.Helpers.UserModel;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,22 +34,9 @@ public class personalSaderat2Activity extends AppCompatActivity {
     Boolean checked;
     String retreiveAccount;
 
-    public Boolean checkValues(){
-        checked = false;
-        if (TextUtils.isEmpty(et_amountValue.toString())) {
-            et_amountValue.setError("الرجاء إدخال المطلوب");
-            et_amountValue.requestFocus();
-            checked = true;
-        } else {
-            checked = false;
-        }
 
-        return checked;
-
-    }
     public void submit (View view){
-        checkValues();
-        if (checked) {
+
 
             RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
 
@@ -54,12 +44,24 @@ public class personalSaderat2Activity extends AppCompatActivity {
             StringRequest MyStringRequest = new StringRequest(Request.Method.POST, urlSubmit, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "تم تسجيل الصادر", Toast.LENGTH_SHORT);
-                    toast.setMargin(50, 50);
-                    toast.show();
-                    Intent intent = new Intent(personalSaderat2Activity.this, personalSaderatActivity.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slideinright, R.anim.slideoutleft);
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        if (jsonObject.getBoolean("status") == true) {
+                            Toast toast = Toast.makeText(getApplicationContext(), "تم تسجيل الصادر", Toast.LENGTH_SHORT);
+                            toast.setMargin(50, 50);
+                            toast.show();
+                            Intent intent = new Intent(personalSaderat2Activity.this, personalSaderatActivity.class);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.slideinright, R.anim.slideoutleft);
+
+                        } else {
+                            Toast toast = Toast.makeText(getApplicationContext(), "الرجاء مراجعة اتصالك بالانترنت والتأكد من ملئ جميع الخانات", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 }
             }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
                 @Override
@@ -83,7 +85,7 @@ public class personalSaderat2Activity extends AppCompatActivity {
 
             MyRequestQueue.add(MyStringRequest);
 /*  */
-        }
+
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

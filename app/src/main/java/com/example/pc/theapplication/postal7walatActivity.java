@@ -40,84 +40,36 @@ public class postal7walatActivity extends AppCompatActivity {
     String branch;
     TextView tv_senderbranchValue;
 
-    String urlSubmit = " http://branding-kitchen.com/ba/barid.php";
+    String urlSubmit = "http://branding-kitchen.com/ba/barid.php";
 
     EditText et_receiverValue, et_nationalIDValue, et_mobilenumberValue, et_amounttransferredValue, et_transferringvaluevalue, et_amountobereceivedValue, et_notes;
 
     String UserIn, BranchIn, Way, WayDef;
     String name, amount, transferringValue, secamount, notes,national_Id,phone;
 
-    Boolean checked;
-
-    public Boolean checkValues(){
-        checked = false;
-        if (TextUtils.isEmpty(et_receiverValue.toString())) {
-            et_receiverValue.setError("الرجاء إدخال المطلوب");
-            et_receiverValue.requestFocus();
-            checked = true;
-        } else {
-            checked = false;
-
-        }
-        if (TextUtils.isEmpty(et_nationalIDValue.toString())) {
-            et_nationalIDValue.setError("الرجاء إدخال المطلوب");
-            et_nationalIDValue.requestFocus();
-            checked = true;
-        } else {
-            checked = false;
-
-        }
-        if (TextUtils.isEmpty(et_mobilenumberValue.toString())) {
-            et_mobilenumberValue.setError("الرجاء إدخال المطلوب");
-            et_mobilenumberValue.requestFocus();
-            checked = true;
-        } else {
-            checked = false;
-
-        }
-        if (TextUtils.isEmpty(et_amounttransferredValue.toString())) {
-            et_amounttransferredValue.setError("الرجاء إدخال المطلوب");
-            et_amounttransferredValue.requestFocus();
-            checked = true;
-        } else {
-            checked = false;
-
-        }
-        if (TextUtils.isEmpty(et_transferringvaluevalue.toString())) {
-            et_transferringvaluevalue.setError("الرجاء إدخال المطلوب");
-            et_transferringvaluevalue.requestFocus();
-            checked = true;
-        } else {
-            checked = false;
-
-        }
-        if (TextUtils.isEmpty(et_amountobereceivedValue.toString())) {
-            et_amountobereceivedValue.setError("الرجاء إدخال المطلوب");
-            et_amountobereceivedValue.requestFocus();
-            checked = true;
-        } else {
-            checked = false;
-
-        }
-
-        return checked;
-
-    }
 
     public void submit (View view){
 
-        checkValues();
-        if (checked) {
             RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
 
 
             StringRequest MyStringRequest = new StringRequest(Request.Method.POST, urlSubmit, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        if (jsonObject.getBoolean("status") == true) {
+                            Toast toast = Toast.makeText(getApplicationContext(), "تم تسجيل الإيراد", Toast.LENGTH_SHORT);
+                            toast.setMargin(50, 50);
+                            toast.show();
 
-                    Toast toast = Toast.makeText(getApplicationContext(),"تم تسجيل الإيراد",Toast.LENGTH_SHORT);
-                    toast.setMargin(50,50);
-                    toast.show();
+                        } else {
+                            Toast toast = Toast.makeText(getApplicationContext(), "الرجاء مراجعة اتصالك بالانترنت والتأكد من ملئ جميع الخانات", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
                 @Override
@@ -129,14 +81,13 @@ public class postal7walatActivity extends AppCompatActivity {
                     Map<String, String> MyData = new HashMap<String, String>();
                     MyData.put("auth", "barid");
                     MyData.put("name", name);
-                    MyData.put("nationalID", national_Id);
+                    MyData.put("national_id", national_Id);
                     MyData.put("phone", phone);
                     MyData.put("inPrice", amount);
                     MyData.put("equal", transferringValue);
                     MyData.put("outPrice", secamount);
                     MyData.put("branchIn", BranchIn);
                     MyData.put("notes", notes);
-                    MyData.put("userIn", UserIn);
 
                     return MyData;
                 }
@@ -146,7 +97,7 @@ public class postal7walatActivity extends AppCompatActivity {
             MyRequestQueue.add(MyStringRequest);
 
         }
-    }
+
 
 
     @Override
@@ -166,7 +117,7 @@ public class postal7walatActivity extends AppCompatActivity {
         UserModel userModel = SharedprefManager.getInstance(getApplicationContext()).getUser();
 
 
-        UserIn = userModel.getUsername();
+
         BranchIn = userModel.getBranch();
 
         Way = userModel.getCountry();

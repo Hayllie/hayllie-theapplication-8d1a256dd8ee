@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -42,12 +43,15 @@ public class personalSaderatActivity extends AppCompatActivity {
 
     public void registerSader (View view){
         if (Clicked) {
-            Intent intent = new Intent(this, personalSaderat2Activity.class);
+            Intent intent = new Intent(personalSaderatActivity.this, personalSaderat2Activity.class);
             intent.putExtra("account", account);
             intent.putExtra("way", way);
 
             startActivity(intent);
             overridePendingTransition(R.anim.slideinleft, R.anim.slideoutright);
+        } else{
+            Toast toast = Toast.makeText(getApplicationContext(), "الرجاء اختيار إحدى الخانتين", Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 
@@ -81,7 +85,8 @@ public class personalSaderatActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Clicked = true;
-                        liBox.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                        liBox.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                        egBox.setBackgroundColor(getResources().getColor(R.color.colorWhite));
                         way = "outEgypt";
                     }
                 });
@@ -89,7 +94,8 @@ public class personalSaderatActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Clicked = true;
-                        egBox.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                        egBox.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                        liBox.setBackgroundColor(getResources().getColor(R.color.colorWhite));
                         way = "inEgypt";
 
                     }

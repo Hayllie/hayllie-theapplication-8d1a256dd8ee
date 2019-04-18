@@ -18,6 +18,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.pc.theapplication.Helpers.NormalSaderModel;
+import com.example.pc.theapplication.Helpers.SharedprefManager;
+import com.example.pc.theapplication.Helpers.UserModel;
 import com.example.pc.theapplication.Helpers.normalSaderatAdapter;
 
 import org.json.JSONArray;
@@ -36,6 +38,7 @@ public class normalSaderatActivity extends AppCompatActivity {
     private normalSaderatAdapter mAdapter;
     String UserIn, UserOut, BranchIn, BranchOut, ID, name, inPrice, equal, outPrice, date, notes, state;
     String URL= "http://branding-kitchen.com/ba/getTrans.php";
+    String Current_Branch;
 
 
     @Override
@@ -46,6 +49,8 @@ public class normalSaderatActivity extends AppCompatActivity {
 /*
         myPreference= new MyPreference(this);
 */
+        UserModel userModel = SharedprefManager.getInstance(getApplicationContext()).getUser();
+        Current_Branch = userModel.getBranch();
 
 
         recyclerView = (RecyclerView) findViewById(R.id.rv_normal_saderat);
@@ -69,7 +74,7 @@ public class normalSaderatActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject =new JSONObject(response);
                             if(jsonObject.getBoolean("status")==true) {
-                                JSONArray jsonArray = jsonObject.getJSONArray("outtrans");
+                                JSONArray jsonArray = jsonObject.getJSONArray("trans");
                                 for (int l = 0; l <= jsonArray.length(); l++) {
                                     JSONObject object = jsonArray.getJSONObject(l);
 
@@ -109,8 +114,9 @@ public class normalSaderatActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+                params.put("auth", "gettrans");
                 params.put("type", "outtrans");
-
+                params.put("branch", Current_Branch);
                 return params;
             }
         };

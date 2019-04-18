@@ -1,6 +1,7 @@
 package com.example.pc.theapplication;
 
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -36,37 +37,24 @@ import java.util.Map;
 public class personal7walatActivity extends AppCompatActivity {
 
     Spinner spinner;
-    String URL="http://branding-kitchen.com/ba/getData.php";
+    String URL = "http://branding-kitchen.com/ba/getData.php";
     ArrayList<String> AccountName;
     String account;
-    TextView tv_receiverbranchValue;
+    TextView tv_receiverbranchValue, tv_lib, tv_egy;
     EditText et_amountTransferedValue, et_notes;
+    Boolean Clicked = false;
 
-    String UserIn, BranchIn, Way, WayDef;
+    String UserIn, BranchIn, WayDef;
     String amount, notes;
 
     String urlSubmit = "http://branding-kitchen.com/ba/pertrans.php";
 
-    Boolean checked;
 
-    public Boolean checkValues(){
-        checked = false;
-        if (TextUtils.isEmpty(et_amountTransferedValue.toString())) {
-            et_amountTransferedValue.setError("الرجاء إدخال المطلوب");
-            et_amountTransferedValue.requestFocus();
-            checked = true;
-        } else {
-            checked = false;
-        }
+    public void submit(View view) {
 
-        return checked;
+        if (Clicked==true) {
 
-    }
 
-    public void submit (View view){
-
-        checkValues();
-        if (checked) {
             RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
 
 
@@ -74,9 +62,20 @@ public class personal7walatActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
 
-                    Toast toast = Toast.makeText(getApplicationContext(),"تم تسجيل الإيراد",Toast.LENGTH_SHORT);
-                    toast.setMargin(50,50);
-                    toast.show();
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        if (jsonObject.getBoolean("status") == true) {
+                            Toast toast = Toast.makeText(getApplicationContext(), "تم تسجيل الإيراد", Toast.LENGTH_SHORT);
+                            toast.setMargin(50, 50);
+                            toast.show();
+
+                        } else {
+                            Toast toast = Toast.makeText(getApplicationContext(), "الرجاء مراجعة اتصالك بالانترنت والتأكد من ملئ جميع الخانات", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
                 @Override
@@ -100,8 +99,14 @@ public class personal7walatActivity extends AppCompatActivity {
 
 
             MyRequestQueue.add(MyStringRequest);
-        }
+        } else{
+        Toast toast = Toast.makeText(getApplicationContext(), "الرجاء اختيار إحدى العملتين", Toast.LENGTH_SHORT);
+        toast.show();
     }
+
+}
+
+
 
 
     @Override
@@ -111,6 +116,8 @@ public class personal7walatActivity extends AppCompatActivity {
 
         tv_receiverbranchValue = findViewById(R.id.tv_receiverbranchValue);
         et_amountTransferedValue = findViewById(R.id.et_amountTransferedValue);
+        tv_egy = findViewById(R.id.tv_egy);
+        tv_lib = findViewById(R.id.tv_lib);
         et_notes = findViewById(R.id.et_notes);
         UserModel userModel = SharedprefManager.getInstance(getApplicationContext()).getUser();
 
@@ -118,13 +125,7 @@ public class personal7walatActivity extends AppCompatActivity {
 
         UserIn = userModel.getUsername();
         BranchIn = userModel.getBranch();
-        Way = userModel.getCountry();
 
-        if(Way=="مصر"){
-            WayDef = "outEgypt";
-        } else {
-            WayDef = "inEgypt";
-        }
 
         tv_receiverbranchValue.setText(BranchIn);
         amount = et_amountTransferedValue.toString();
@@ -147,6 +148,29 @@ public class personal7walatActivity extends AppCompatActivity {
             }
         });
 
+
+        tv_lib.setClickable(true);
+        tv_egy.setClickable(true);
+
+        tv_lib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Clicked = true;
+                tv_lib.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                tv_egy.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+                WayDef = "inEgypt";
+            }
+        });
+        tv_egy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Clicked = true;
+                tv_egy.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                tv_lib.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+                WayDef = "outEgypt";
+
+            }
+        });
     }
 
     private void loadSpinnerData(String url) {
@@ -192,6 +216,9 @@ public class personal7walatActivity extends AppCompatActivity {
     }
     public void onBackPressed()
     {
+        tv_lib.setBackground(ContextCompat.getDrawable(personal7walatActivity.this, R.drawable.greyroundedcorners));
+        tv_egy.setBackground(ContextCompat.getDrawable(personal7walatActivity.this, R.drawable.greyroundedcorners));
+
         Intent intent = new Intent(this,n7walatActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slideinright,R.anim.slideoutleft);

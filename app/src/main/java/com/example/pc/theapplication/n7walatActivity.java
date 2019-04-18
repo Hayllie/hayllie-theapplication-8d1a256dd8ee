@@ -31,7 +31,7 @@ public class n7walatActivity extends AppCompatActivity {
 
     }
      public void gotoPersonal (View view){
-        Intent intent = new Intent(getApplicationContext(),prepersonal7walatActivity.class);
+        Intent intent = new Intent(getApplicationContext(),personal7walatActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slideinleft, R.anim.slideoutright);
 

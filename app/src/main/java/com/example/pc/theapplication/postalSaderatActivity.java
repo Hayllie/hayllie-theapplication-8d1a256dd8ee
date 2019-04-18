@@ -18,6 +18,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.pc.theapplication.Helpers.PostalSaderModel;
+import com.example.pc.theapplication.Helpers.SharedprefManager;
+import com.example.pc.theapplication.Helpers.UserModel;
 import com.example.pc.theapplication.Helpers.postalSaderatAdapter;
 
 import org.json.JSONArray;
@@ -36,6 +38,7 @@ public class postalSaderatActivity extends AppCompatActivity {
     private postalSaderatAdapter mAdapter;
     private String ID, name, national_id, phone, inPrice, equal, outPrice, branchIn, branchOut, date, notes, state, userIn, userOut ;
     String URL = "http://branding-kitchen.com/ba/getTrans.php";
+    String Current_Branch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +48,10 @@ public class postalSaderatActivity extends AppCompatActivity {
 /*
         myPreference= new MyPreference(this);
 */
+        UserModel userModel = SharedprefManager.getInstance(getApplicationContext()).getUser();
+        Current_Branch = userModel.getBranch();
 
-        recyclerView = (RecyclerView) findViewById(R.id.rv_normal_saderat);
+        recyclerView = (RecyclerView) findViewById(R.id.rv_postal_saderat);
         mAdapter = new postalSaderatAdapter(this,postalSaderatList);
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(getApplicationContext());
@@ -108,8 +113,9 @@ public class postalSaderatActivity extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
-                    params.put("type", "barid");
-
+                        params.put("type", "barid");
+                        params.put("auth", "gettrans");
+                        params.put("branch", Current_Branch);
                     return params;
                     }
                 };

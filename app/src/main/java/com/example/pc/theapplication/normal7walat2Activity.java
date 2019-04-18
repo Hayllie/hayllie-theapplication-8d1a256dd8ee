@@ -59,58 +59,9 @@ public class normal7walat2Activity extends AppCompatActivity {
     String urlSubmit = "http://branding-kitchen.com/ba/outtrans.php";
 
 
-    Boolean checked;
-
-    public Boolean checkValues(){
-        checked = false;
-        if (TextUtils.isEmpty(et_senderValue.toString())) {
-            et_senderValue.setError("الرجاء إدخال المطلوب");
-            et_senderValue.requestFocus();
-            checked = true;
-        } else {
-            checked = false;
-
-        }
-
-        checked = false;
-        if (TextUtils.isEmpty(et_amounttransferredValue.toString())) {
-            et_amounttransferredValue.setError("الرجاء إدخال المطلوب");
-            et_amounttransferredValue.requestFocus();
-            checked = true;
-        } else {
-            checked = false;
-
-        }
-
-        checked = false;
-        if (TextUtils.isEmpty(et_transferringvaluevalue.toString())) {
-            et_transferringvaluevalue.setError("الرجاء إدخال المطلوب");
-            et_transferringvaluevalue.requestFocus();
-            checked = true;
-        } else {
-            checked = false;
-
-        }
-
-        checked = false;
-        if (TextUtils.isEmpty(et_amountobereceivedValue.toString())) {
-            et_amountobereceivedValue.setError("الرجاء إدخال المطلوب");
-            et_amountobereceivedValue.requestFocus();
-            checked = true;
-        } else {
-            checked = false;
-
-        }
-
-
-        return checked;
-
-    }
-
     public void submit (View view){
 
-        checkValues();
-        if (checked) {
+
             RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
 
 
@@ -118,9 +69,20 @@ public class normal7walat2Activity extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
 
-                    Toast toast = Toast.makeText(getApplicationContext(),"تم تسجيل الإيراد",Toast.LENGTH_SHORT);
-                    toast.setMargin(50,50);
-                    toast.show();
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        if (jsonObject.getBoolean("status") == true) {
+                            Toast toast = Toast.makeText(getApplicationContext(), "تم تسجيل الإيراد", Toast.LENGTH_SHORT);
+                            toast.setMargin(50, 50);
+                            toast.show();
+
+                        } else {
+                            Toast toast = Toast.makeText(getApplicationContext(), "الرجاء مراجعة اتصالك بالانترنت والتأكد من ملئ جميع الخانات", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
                 @Override
@@ -150,7 +112,7 @@ public class normal7walat2Activity extends AppCompatActivity {
             MyRequestQueue.add(MyStringRequest);
 
         }
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
