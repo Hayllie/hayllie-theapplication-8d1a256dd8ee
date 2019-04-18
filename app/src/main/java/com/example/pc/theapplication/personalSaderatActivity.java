@@ -46,7 +46,6 @@ public class personalSaderatActivity extends AppCompatActivity {
             intent.putExtra("account", account);
             intent.putExtra("way", way);
 
-
             startActivity(intent);
             overridePendingTransition(R.anim.slideinleft, R.anim.slideoutright);
         }

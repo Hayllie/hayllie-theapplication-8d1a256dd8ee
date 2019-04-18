@@ -195,7 +195,7 @@
             android:layout_weight="1"
             android:text="@string/txt_7walat_personal"
             android:textColor="@color/colorWhite"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/imageView8"

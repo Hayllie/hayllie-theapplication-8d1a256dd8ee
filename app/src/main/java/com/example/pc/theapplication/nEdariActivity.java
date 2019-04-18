@@ -65,6 +65,16 @@ public class nEdariActivity extends AppCompatActivity {
 
 
             StringRequest MyStringRequest = new StringRequest(Request.Method.POST, urlSubmit, new Response.Listener<String>() {
+                protected Map<String, String> getParams() {
+                    Map<String, String> MyData = new HashMap<String, String>();
+                    MyData.put("auth", "mangTrans");
+                    MyData.put("price", amount);
+                    MyData.put("reason", description);
+                    MyData.put("branchIn", BranchIn);
+                    MyData.put("userIn", UserIn);
+
+                    return MyData;
+                }
                 @Override
                 public void onResponse(String response) {
 
@@ -77,18 +87,9 @@ public class nEdariActivity extends AppCompatActivity {
                 public void onErrorResponse(VolleyError error) {
                     //This code is executed if there is an error.
                 }
-            }) {
-                protected Map<String, String> getParams() {
-                    Map<String, String> MyData = new HashMap<String, String>();
-                    MyData.put("auth", "mangTrans");
-                    MyData.put("price", amount);
-                    MyData.put("reason", description);
-                    MyData.put("branchIn", BranchIn);
-                    MyData.put("userIn", UserIn);
+            })/* {
 
-                    return MyData;
-                }
-            };
+            }*/;
 
 
             MyRequestQueue.add(MyStringRequest);

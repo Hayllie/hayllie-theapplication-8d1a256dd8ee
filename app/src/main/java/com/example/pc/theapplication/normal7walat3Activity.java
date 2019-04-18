@@ -154,7 +154,7 @@ public class normal7walat3Activity extends AppCompatActivity {
         et_amountobereceivedValue = findViewById(R.id.et_amountobereceivedValue);
 
 
-        tv_receiverbranchValue = findViewById(R.id.tv_senderbranchValue);
+        tv_receiverbranchValue = findViewById(R.id.tv_receiverbranchValue);
         et_senderValue = findViewById(R.id.et_senderValue);
         et_notes = findViewById(R.id.et_notes);
 

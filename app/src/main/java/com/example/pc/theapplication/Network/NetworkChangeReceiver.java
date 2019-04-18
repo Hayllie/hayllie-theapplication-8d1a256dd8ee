@@ -20,7 +20,7 @@ public class NetworkChangeReceiver extends BroadcastReceiver{
 
         if (status == "Not connected to Internet"){
             Intent intentx = new Intent();
-            intentx.setClassName("com.example", "com.example.pc.theapplication.normalSaderatActivity");
+            intentx.setClassName("com.example", "com.example.pc.theapplication.NoConnectionActivity");
             intentx.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentx);
 

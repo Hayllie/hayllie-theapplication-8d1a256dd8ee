@@ -47,6 +47,7 @@ public class prepersonal7walatActivity extends AppCompatActivity {
 
             tv_lib = findViewById(R.id.txt_lib);
             tv_egp = findViewById(R.id.txt_egp);
+
             tv_lib.setBackground(ContextCompat.getDrawable(prepersonal7walatActivity.this, R.drawable.greyroundedcorners));
             tv_egp.setBackground(ContextCompat.getDrawable(prepersonal7walatActivity.this, R.drawable.greyroundedcorners));
 

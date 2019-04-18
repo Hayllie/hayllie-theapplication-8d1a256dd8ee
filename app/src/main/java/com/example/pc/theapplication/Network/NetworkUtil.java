@@ -40,7 +40,7 @@ public class NetworkUtil {
         } else if (conn == NetworkUtil.TYPE_NOT_CONNECTED) {
             status = "Not connected to Internet";
 /*            Intent intent = new Intent(this, normalSaderatActivity.class);
-            startActivity(intent);*/
+            startActivity(intent); */
         }
         return status;
     }
